@@ -1,4 +1,6 @@
-const SplashPage = () => {
+import React from "react"
+
+export default function SplashPage () {
     return (
         <>
         <h1>Music for Keyboard and Mouse</h1>
@@ -6,5 +8,3 @@ const SplashPage = () => {
         </>
     )
 }
-
-export default SplashPage

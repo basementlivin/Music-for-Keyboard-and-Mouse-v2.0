@@ -1,10 +1,10 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "https://music-for-keyboard-and-mouse.herokuapp.com/archive";
-console.log(BASE_URL);
-// todo: figure out why the above isn't pulling the URL from .env !!
 
-const Archive = (props) => {
+export default function Archive () {
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    console.log(BASE_URL);
     const [recordings, setRecordings ] = useState([]);
     const getRecordings = async () => {
         try {
@@ -20,12 +20,9 @@ const Archive = (props) => {
 
     console.log(`Hey chum, looks like there are $%{recordings.length} available to render`)
 
-    
     return (
         <div>
             <h1>Music for Keyboard and Mouse, The Collected Recordings (2022—present)</h1>
         </div>
     )
 }
-
-export default Archive

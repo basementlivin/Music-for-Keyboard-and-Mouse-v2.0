@@ -1,6 +1,7 @@
+import React from "react"
 import { Link } from "react-router-dom"
 
-const Footer = (props) => {
+export default function Footer (props) {
     return (
         <footer>
             <nav className="nav">
@@ -11,5 +12,3 @@ const Footer = (props) => {
         </footer>
     )
 }
-
-export default Footer
