@@ -21,11 +21,11 @@ export default function Archive () {
     
     return (
         <div>
-            <h1>Music for Keyboard and Mouse, The Collected Recordings (2022—present)</h1>
+            <h1 className="archive-header">Music for Keyboard and Mouse, The Collected Recordings (2022—present)</h1>
             <div className="archive-wrapper">
                 <div className="recording-divider"></div>
                     <div className="recording-wrapper">
-                        <ul>
+                        <ul className="recording-details">
                             {recordings.map(recording => <li>{recording.artistname}</li>)}
                             {recordings.map(recording => <li>{recording.location}</li>)}
                             {recordings.map(recording => <li>{recording.environment}</li>)}
