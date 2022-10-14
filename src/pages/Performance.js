@@ -151,68 +151,52 @@ const prompts = [
     }
 ]
 
-export default function Performance () {
+export default function Performance() {
     const [promptIndex, setPromptIndex] = useState(0)
-    const [numberOfClicks, setNumberOfClicks] = useState(0)
     const [numberOfKeyDowns, setNumberOfKeyDowns] = useState(0)
-    const [startTime, setStartTime] = useState(null)
-    const [keyDownAllowed, setKeyDownAllowed] = useState(true)
 
-    const clickHandler = (e) => console.log("clickity!", e)
-
+    // handler functions that are called by event listeners
     const keyDownHandler = (KeyboardEvent) => {
         console.log("The keyboard event code is: ", KeyboardEvent.code)
         const currentPrompt = prompts[promptIndex];
-        if (currentPrompt["domEvent"] === "keydown") {
-            countKeyDowns(currentPrompt, KeyboardEvent.code)
+        if (currentPrompt["domEvent"] === "keydown" && currentPrompt["keyCode"] === KeyboardEvent.code) {
+            countKeyDowns()
         }
     }
 
-    const keyUpHandler = (e) => console.log("keyUp!", e)
-    
-
+    // add and remove event listeners
     useEffect(() => {
-        // define handler functions
-
-
         // add event listeners and attach them to handler functions
-        window.document.addEventListener("click", clickHandler)
         window.document.addEventListener("keydown", keyDownHandler)
-        window.document.addEventListener("keyup", keyUpHandler)
 
         // when component unmounts, remove event listeners
         return () => {
-            window.document.removeEventListener("click", clickHandler)
             window.document.removeEventListener("keydown", keyDownHandler)
-            window.document.removeEventListener("keyup", keyUpHandler)
         }
-    }, []);
+    }, [keyDownHandler]);
 
-    const countKeyDowns = (currentPrompt, eventCode) => {
-        console.log("COUNTING THE KEY DOWNS, BOSS!", numberOfKeyDowns)
-        return setNumberOfKeyDowns(numberOfKeyDowns + 1)
-    }
-
-        useEffect(() => {
-            if (numberOfKeyDowns === prompts[promptIndex]["amount"]) {
-            console.log('ITS ALL HAPPENING!') 
+    // helper functions that are called by handler functions
+    const countKeyDowns = () => {
+        const newNumberOfKeyDowns = numberOfKeyDowns + 1
+        if (newNumberOfKeyDowns === prompts[promptIndex]["amount"]) {
             setNumberOfKeyDowns(0)
             updatePrompt();
         } else {
-            console.log("its not all happening", numberOfKeyDowns,  prompts[promptIndex]["amount"])
+            setNumberOfKeyDowns(newNumberOfKeyDowns)
         }
-        }, [numberOfKeyDowns])
-
+    }
 
     const updatePrompt = () => {
         const newPromptIndex = promptIndex + 1
-        console.log("UPDATING PROMPT! New prompt index is...", newPromptIndex)
         if (newPromptIndex < prompts.length) {
             setPromptIndex(newPromptIndex)
         }
     }
 
     return (
-        <div>Performance</div>
+        <>
+            <div>Performance</div>
+            <div>{prompts[promptIndex]["text"]}</div>
+        </>
     )
 }
