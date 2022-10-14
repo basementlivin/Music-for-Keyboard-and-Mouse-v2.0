@@ -155,6 +155,7 @@ export default function Performance() {
     const [promptIndex, setPromptIndex] = useState(0)
     const [numberOfClicks, setNumberOfClicks] = useState(0)
     const [numberOfKeyDowns, setNumberOfKeyDowns] = useState(0)
+    const [startTime, setStartTime] = useState(0)
 
     // handler functions that are called by event listeners
     const clickHandler = (MouseEvent) => {
@@ -184,7 +185,7 @@ export default function Performance() {
             window.document.removeEventListener("click", clickHandler)
         }
     }, [clickHandler]);
-    
+
     useEffect(() => {
         // add event listeners and attach them to handler functions
         window.document.addEventListener("keydown", keyDownHandler)

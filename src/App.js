@@ -4,6 +4,7 @@ import SplashPage from "./pages/SplashPage"
 import Archive from "./pages/Archive"
 import Performance from "./pages/Performance"
 import ShowRecordingDetails from "./pages/ShowRecordingDetails"
+import LogPerformance from "./pages/LogPerformance"
 import './App.css'
 
 
@@ -13,6 +14,7 @@ export default function Main () {
             <Routes>
                 <Route path="/" element={<SplashPage />} />
                 <Route path="/performance" element={<Performance />} />
+                <Route path="/performancelog" element={<LogPerformance />} />
                 <Route path="/archive" element={<Archive />} />
                 <Route path="/archive/:id" element={<ShowRecordingDetails />} />
             </Routes>
