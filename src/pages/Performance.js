@@ -153,9 +153,18 @@ const prompts = [
 
 export default function Performance() {
     const [promptIndex, setPromptIndex] = useState(0)
+    const [numberOfClicks, setNumberOfClicks] = useState(0)
     const [numberOfKeyDowns, setNumberOfKeyDowns] = useState(0)
 
     // handler functions that are called by event listeners
+    const clickHandler = (MouseEvent) => {
+        console.log ("Lemme tell u about this Mouse Event: " + MouseEvent)
+        const currentPrompt = prompts[promptIndex];
+        if (currentPrompt["domEvent"] === "click") {
+            countClicks();
+        }
+    }
+
     const keyDownHandler = (KeyboardEvent) => {
         console.log("The keyboard event code is: ", KeyboardEvent.code)
         const currentPrompt = prompts[promptIndex];
@@ -164,7 +173,18 @@ export default function Performance() {
         }
     }
 
+
     // add and remove event listeners
+    useEffect(() => {
+        // add event listeners and attach them to handler functions
+        window.document.addEventListener("click", clickHandler)
+
+        // when component unmounts, remove event listeners
+        return () => {
+            window.document.removeEventListener("click", clickHandler)
+        }
+    }, [clickHandler]);
+    
     useEffect(() => {
         // add event listeners and attach them to handler functions
         window.document.addEventListener("keydown", keyDownHandler)
@@ -175,7 +195,18 @@ export default function Performance() {
         }
     }, [keyDownHandler]);
 
+
     // helper functions that are called by handler functions
+    const countClicks = () => {
+        const newNumberOfClicks = numberOfClicks + 1
+        if (newNumberOfClicks === prompts[promptIndex]["amount"]) {
+            setNumberOfClicks(0)
+            updatePrompt();
+        } else {
+            setNumberOfClicks(newNumberOfClicks)
+        }
+    }
+
     const countKeyDowns = () => {
         const newNumberOfKeyDowns = numberOfKeyDowns + 1
         if (newNumberOfKeyDowns === prompts[promptIndex]["amount"]) {
@@ -188,6 +219,7 @@ export default function Performance() {
 
     const updatePrompt = () => {
         const newPromptIndex = promptIndex + 1
+            //todo: make it random here instead of +1, brother!
         if (newPromptIndex < prompts.length) {
             setPromptIndex(newPromptIndex)
         }
