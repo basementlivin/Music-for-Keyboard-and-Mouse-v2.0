@@ -147,7 +147,10 @@ const prompts = [
     },
     {
         "id": "prompt-22",
-        "text": "Keep on listening."
+        "domEvent": "keydown",
+        "amount": 7,
+        "keyCode": "KeyA",
+        "text": "Tap the A key seven times."
     }
 ]
 
@@ -218,13 +221,30 @@ export default function Performance() {
         }
     }
 
-    const updatePrompt = () => {
-        const newPromptIndex = promptIndex + 1
-            //todo: make it random here instead of +1, brother!
-        if (newPromptIndex < prompts.length) {
-            setPromptIndex(newPromptIndex)
+    let completedPrompts = []
+
+    const updatePrompt = (promptIndex) => {
+        if (completedPrompts.length === 0) {
+            for (let i = 0; i <promptIndex.length; i++)
+            completedPrompts.push(i);
         }
+
+        let randomPrompt = Math.floor(Math.random() * completedPrompts.length);
+        let randomPromptIndex = completedPrompts[randomPrompt];
+
+        completedPrompts.splice(randomPrompt, 1);
+        setPromptIndex(randomPromptIndex);
     }
+    
+    // ///////////////////////////////////////
+    // BEAUTIFULLY-PRESERVED, FUNCTIONAL CODE
+    // const updatePrompt = () => {
+    //     const newPromptIndex = promptIndex + 1
+    //     if (newPromptIndex < prompts.length) {
+    //         setPromptIndex(newPromptIndex)
+    //     }
+    // }
+    // ///////////////////////////////////////
 
     return (
         <>
