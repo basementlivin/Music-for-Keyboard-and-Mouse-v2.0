@@ -159,6 +159,7 @@ export default function Performance() {
     const [numberOfClicks, setNumberOfClicks] = useState(0)
     const [numberOfKeyDowns, setNumberOfKeyDowns] = useState(0)
     const [startTime, setStartTime] = useState(0)
+    const [keyDownAllowed, setKeyDownAllowed] = useState(0)
 
     // handler functions that are called by event listeners
     const clickHandler = (MouseEvent) => {
@@ -199,6 +200,16 @@ export default function Performance() {
         }
     }, [keyDownHandler]);
 
+    useEffect(() => {
+        // add event listeners and attach them to handler functions
+        window.document.addEventListener("keyup", keyUpHandler)
+
+        // when component unmounts, remove event listeners
+        return () => {
+            window.document.removeEventListener("keyup", keyUpHandler)
+        }
+    }, [keyUpHandler]);
+
 
     // helper functions that are called by handler functions
     const countClicks = () => {
@@ -221,30 +232,60 @@ export default function Performance() {
         }
     }
 
-    let completedPrompts = []
-
-    const updatePrompt = (promptIndex) => {
-        if (completedPrompts.length === 0) {
-            for (let i = 0; i <promptIndex.length; i++)
-            completedPrompts.push(i);
-        }
-
-        let randomPrompt = Math.floor(Math.random() * completedPrompts.length);
-        let randomPromptIndex = completedPrompts[randomPrompt];
-
-        completedPrompts.splice(randomPrompt, 1);
-        setPromptIndex(randomPromptIndex);
-    }
     
-    // ///////////////////////////////////////
-    // BEAUTIFULLY-PRESERVED, FUNCTIONAL CODE
-    // const updatePrompt = () => {
-    //     const newPromptIndex = promptIndex + 1
-    //     if (newPromptIndex < prompts.length) {
-    //         setPromptIndex(newPromptIndex)
+    const keyHoldHandler = () => {
+        // let startTime = null;
+        // let keyDownAllowed = true;
+
+        if (KeyboardEvent.repeat != undefined) {
+            keyDownAllowed = !KeyboardEvent.repeat;
+        }
+        if (!keyDownAllowed) return;
+        keyDownAllowed = false;
+
+        startTime = Date.now();
+    }
+
+    const keyUpHandler = () => {
+        const endTime = Date.now();
+        const elapsedTime = endTime - startTime;
+        keyDownAllowed = true;
+        startTime = null;
+        const currentPrompt = prompts[promptIndex];
+        const promptDuration = currentPrompt["duration"];
+        const userHeldDownKeyLongEnough = elapsedTime >= promptDuration;
+
+        if (userHeldDownKeyLongEnough) {
+            elapsedTime = 0
+            updatePrompt();
+        }
+    }
+
+
+    // let completedPrompts = []
+
+    // const updatePrompt = (promptIndex) => {
+    //     if (completedPrompts.length === 0) {
+    //         for (let i = 0; i <promptIndex.length; i++)
+    //         completedPrompts.push(i);
     //     }
+
+    //     let randomPrompt = Math.floor(Math.random() * completedPrompts.length);
+    //     let randomPromptIndex = completedPrompts[randomPrompt];
+
+    //     completedPrompts.splice(randomPrompt, 1);
+    //     setPromptIndex(randomPromptIndex);
     // }
-    // ///////////////////////////////////////
+
+    ///////////////////////////////////////
+    // BEAUTIFULLY-PRESERVED, FUNCTIONAL CODE
+    const updatePrompt = () => {
+        const newPromptIndex = promptIndex + 1
+        if (newPromptIndex < prompts.length) {
+            setPromptIndex(newPromptIndex)
+        }
+    }
+    ///////////////////////////////////////
 
     return (
         <>
