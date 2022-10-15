@@ -19,7 +19,7 @@ export default function LogPerformance () {
     const createLog = async (performanceData) => {
         try {
             const newPerformanceLog = await fetch(ARCHIVE_URL, {
-                method: "post",
+                method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(performanceData),
             });

@@ -14,7 +14,7 @@ export default function Main () {
             <Routes>
                 <Route path="/" element={<SplashPage />} />
                 <Route path="/performance" element={<Performance />} />
-                <Route path="/performancelog" element={<LogPerformance />} />
+                <Route path="/log" element={<LogPerformance />} />
                 <Route path="/archive" element={<Archive />} />
                 <Route path="/archive/:id" element={<ShowRecordingDetails />} />
             </Routes>
