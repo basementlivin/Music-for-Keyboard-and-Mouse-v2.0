@@ -1,55 +1,97 @@
-// import React from "react"
-// import { useState } from "react"
-// import { Navigate } from "react-router-dom";
+import { useNavigate, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
-// export default function ShowRecordingDetails () {
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
-//     // todo: make this url make sense
-//     const URL = `process.env.REACT_APP_BASE_URL + "archive/" + ${recordingdetails.id}`;
-//     const [editLog, setEditLog] = useState("")
+export const ShowRecordingDetails = () => {
+    const [recordingDeets, setRecordingDeets] = useState(null)
+    const {id} = useParams()
+    const navigate = useNavigate()
+    
+    const getLogs = async () => {
+        const URL = `${BASE_URL}recording/${id}`
+        console.log(URL)
+        try {
+            const response = await fetch(URL)
+            const recordingDetails = await response.json()
+            setRecordingDeets(recordingDetails)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
-//     const updateRecordingLog = async (e) => {
-//         e.preventDefault()
+    const handleChange = (e) => {
+        setRecordingDeets({ ...recordingDeets, [e.target.name]: e.target.value });
+    };
 
-//         try {
-//             await fetch(URL, {
-//                 method: "PUT",
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                 },
-//                 body: JSON.stringify(editLog),
-//             })
-//             getRecordings()
-//         } catch (err) {
-//             console.log(err)
-//         }
-//     }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const updateRecordingDeets = { ...recordingDeets }
+            const options = {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updateRecordingDeets)
+            }
+            const response = await fetch(URL, options)
+            const responseData = await response.json()
+            setRecordingDeets({ location: "", environment: "", notes: "" })
+            navigate("/archive")
+        } catch (err) {
+            console.log(err)
+        }
+    };
 
-//     const handleChange = event => {
-//         setEditLog({ ...editLog, [event.target.name]: event.target.value })
-//     }
+    const deletePerformanceLog = async () => {
+        try {
+            const options = { method: "DELETE" }
+            const URL = `${BASE_URL}recording/${id}`
+            console.log(URL)
 
+            const response = await fetch(URL, options)
+            const deletedLog = await response.json()
+            console.log(deletedLog)
+            navigate("/archive")
+        } catch (err) {
+            console.log(err)
+            navigate("/archive/" + id)
+        }
+    };
 
-
-//     const deletePerformanceLog = async () => {
-//         try {
-//             const options = {
-//                 method: "DELETE"
-//             }
-//             const response = await fetch(URL, options)
-//             const deletedPerformanceLog = await response.json()
-//             Navigate("/archive")
-//         } catch (err) {
-//             console.log(err)
-//             Navigate(URL)
-//         }
-//     }
-
-
-//     return (
-//         <div>
-//             <h1>Edit or Delete Recording</h1>
-//             <p>Add a form here.</p>
-//         </div>
-//     )
-// }
+    return (
+        <div>
+            <h1>Edit performance log.</h1>
+            <section>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={recordingDeets.location}
+                        maxLength="80"
+                        name="location"
+                        placeholder={recordingDeets.location}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        value={recordingDeets.environment}
+                        maxLength="50"
+                        name="environment"
+                        placeholder={recordingDeets.environment}
+                        onChange={handleChange}
+                        />
+                    <input
+                        type="text"
+                        value={recordingDeets.notes}
+                        maxLength="400"
+                        name="notes"
+                        placeholder={recordingDeets.notes}
+                        onChange={handleChange}
+                    />
+                    <input type="submit" value="Submit" />
+                </form>
+            </section>
+        </div>
+    )
+}

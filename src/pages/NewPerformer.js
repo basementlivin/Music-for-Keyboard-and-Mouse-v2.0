@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const NewPerformer = () => {
     const URL = process.env.REACT_APP_BASE_URL + "performers";
     console.log(URL)
+    const navigate = useNavigate();
     const [newPerformerForm, setNewPerformerForm] = useState({
         name: "",
         email: "",
@@ -27,7 +29,7 @@ export const NewPerformer = () => {
             const response = await fetch(URL, options)
             const responseData = await response.json()
             setNewPerformerForm({ name: "", email: "" })
-            // todo after successful POST request, navigate to performance page
+            navigate("/performance")
         } catch (err) {
             console.log(err)
         }
