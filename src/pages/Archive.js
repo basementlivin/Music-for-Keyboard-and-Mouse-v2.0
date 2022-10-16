@@ -27,11 +27,13 @@ export default function Archive () {
             <div className="archive-wrapper">
                 <div className="recording-divider"></div>
                     <div className="recording-wrapper">
+                        {recordings.map(recording => (
                         <ul className="recording-details">
-                            {recordings.map(recording => <li>{recording.name}</li>)}
-                            {recordings.map(recording => <li>{recording.location}</li>)}
-                            {recordings.map(recording => <li>{recording.environment}</li>)}
+                            <li>{recording.name}</li>
+                            <li>{recording.location}</li>
+                            <li>{recording.environment}</li>
                         </ul>
+                        ))}
                     </div>
                 <div className="recording-divider"></div>
             </div>
