@@ -1,11 +1,8 @@
 import React from "react"
 import { useState } from "react"
 
-
-const ARCHIVE_URL = process.env.REACT_APP_BASE_URL + "archive";
-console.log(ARCHIVE_URL) // HEY MAN, LOOKS GOOD.
-
 export default function LogPerformance () {
+    const URL = process.env.REACT_APP_BASE_URL + "archive";
     const [newLog, setNewLog] = useState({
         location: "",
         environment: "",
@@ -16,34 +13,31 @@ export default function LogPerformance () {
         setNewLog({ ...newLog, [e.target.name] : e.target.value })
     };
 
-    const createLog = async (performanceData) => {
-        try {
-            const newPerformanceLog = await fetch(ARCHIVE_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(performanceData),
-            });
-        } catch (err) {
-
-        }
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newPerformanceLog = await createLog();
-        setNewLog({
-            location: "",
-            environment: "",
-            notes: "",
-        })
+        try {
+            const newPerformanceLog = { ...newLog }
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newPerformanceLog)
+        }
+        const response = await fetch (URL, options)
+        const responseData = await response.json()
+        setNewLog({ location: "", environment: "", notes: "" })
+    } catch (err) {
+        console.log(err)
     }
+};
 
+// todo: link performance log to specific performer ID!
 
     return (
         <div>
-            <h1>Log Your Performance</h1>
+            <h1>Log your performance here.</h1>
             <section>
-                <h2>Log your performance here.</h2>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
@@ -69,6 +63,7 @@ export default function LogPerformance () {
                         placeholder="Additional notes (optional)..."
                         onChange={handleChange}
                     />
+                    <input type="submit" value="Submit" />
                 </form>
             </section>
         </div>
