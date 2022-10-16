@@ -15,25 +15,23 @@ export const NewPerformer = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const newPerformer = await createPerformer()
-        setNewPerformerForm({ name: "", email: "" })
-    };
-
-    const createPerformer = async (Performer) => {
         try {
-            const newPerformer = await fetch(URL, {
+            const newPerformer = { ...newPerformerForm }
+            const options = {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(Performer)
-            });
-            console.log(newPerformer)
+                body: JSON.stringify(newPerformer)
+            }
+            const response = await fetch(URL, options)
+            const responseData = await response.json()
+            setNewPerformerForm({ name: "", email: "" })
+            // todo after successful POST request, navigate to performance page
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
-    }
-
+    };
 
     return (
         <>
@@ -42,6 +40,7 @@ export const NewPerformer = () => {
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
+                required
                 value={newPerformerForm.name}
                 name="name"
                 placeholder="John Cage"
@@ -49,9 +48,10 @@ export const NewPerformer = () => {
             />
             <input
                 type="text"
+                required
                 value={newPerformerForm.email}
                 name="email"
-                placeholder="john@watermusic.com"
+                placeholder="johnny@watermusic.net"
                 onChange={handleChange}
             />
             <input type="submit" value="Submit" />

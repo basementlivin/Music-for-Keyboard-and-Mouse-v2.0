@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react';
 
 
 export default function Archive () {
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const URL = process.env.REACT_APP_BASE_URL + "archive";
     const [recordings, setRecordings ] = useState([]);
+    
     const getRecordings = async () => {
         try {
-            const response = await fetch(BASE_URL)
+            const response = await fetch(URL)
             const allRecordings = await response.json()
             setRecordings(allRecordings)
         } catch (err) {
@@ -26,7 +27,7 @@ export default function Archive () {
                 <div className="recording-divider"></div>
                     <div className="recording-wrapper">
                         <ul className="recording-details">
-                            {recordings.map(recording => <li>{recording.artistname}</li>)}
+                            {recordings.map(recording => <li>{recording.name}</li>)}
                             {recordings.map(recording => <li>{recording.location}</li>)}
                             {recordings.map(recording => <li>{recording.environment}</li>)}
                         </ul>
