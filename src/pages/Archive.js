@@ -1,11 +1,12 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Link from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Archive () {
     const URL = process.env.REACT_APP_BASE_URL + "archive";
     const [recordings, setRecordings ] = useState([]);
+    const navigate = useNavigate();
     
     const getRecordings = async () => {
         try {
@@ -28,10 +29,17 @@ export default function Archive () {
                 <div className="recording-divider"></div>
                     <div className="recording-wrapper">
                         {recordings.map(recording => (
-                        <ul className="recording-details">
+                        <ul className="recording-details" key={recording._id}>
                             <li>{recording.name}</li>
                             <li>{recording.location}</li>
                             <li>{recording.environment}</li>
+                            <li>
+                                <div
+                                    role="button"
+                                    onClick={()=>navigate(`/archive/${recording._id}`)}>
+                                    go to recording
+                                </div>
+                            </li>
                         </ul>
                         ))}
                     </div>
