@@ -9,7 +9,7 @@ export const ShowRecordingDetails = () => {
     const navigate = useNavigate()
     
     const getLogs = async () => {
-        const URL = `${BASE_URL}recording/${id}`
+        const URL = `${BASE_URL}archive/${id}`
         console.log(URL)
         try {
             const response = await fetch(URL)
@@ -47,7 +47,7 @@ export const ShowRecordingDetails = () => {
     const deletePerformanceLog = async () => {
         try {
             const options = { method: "DELETE" }
-            const URL = `${BASE_URL}recording/${id}`
+            const URL = `${BASE_URL}archive/${id}`
             console.log(URL)
 
             const response = await fetch(URL, options)
@@ -59,6 +59,10 @@ export const ShowRecordingDetails = () => {
             navigate("/archive/" + id)
         }
     };
+
+    useEffect(() => {
+        getLogs()
+    }, []);
 
     return (
         <div>

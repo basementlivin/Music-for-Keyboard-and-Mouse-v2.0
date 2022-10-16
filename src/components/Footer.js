@@ -8,6 +8,12 @@ export default function Footer (props) {
                 <Link to="/">
                     <p>home</p>
                 </Link>
+                <Link to="/register">
+                    <p>register</p>
+                </Link>
+                <Link to="/archive">
+                    <p>archive</p>
+                </Link>
             </nav>
         </footer>
     )

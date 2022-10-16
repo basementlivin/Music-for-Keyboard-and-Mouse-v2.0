@@ -6,6 +6,7 @@ import Archive from "./pages/Archive"
 import Performance from "./pages/Performance"
 import ShowRecordingDetails from "./pages/ShowRecordingDetails"
 import LogPerformance from "./pages/LogPerformance"
+import Footer from "./components/Footer"
 import './App.css'
 
 
@@ -17,9 +18,11 @@ export default function Main () {
                 <Route path="/register" element={<NewPerformer />} />
                 <Route path="/performance" element={<Performance />} />
                 <Route path="/log" element={<LogPerformance />} />
-                <Route path="/archive" element={<Archive />} />
-                {/* <Route path="/archive/:id" element={<ShowRecordingDetails />} /> */}
+                <Route path="/archive" element={<Archive />} >
+                    {/* <Route path="/archive/:id" element={<ShowRecordingDetails />} /> */}
+                </Route>
             </Routes>
+            <Footer />
         </main>
     )
 }
