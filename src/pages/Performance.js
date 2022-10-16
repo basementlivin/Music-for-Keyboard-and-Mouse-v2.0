@@ -200,15 +200,15 @@ export default function Performance() {
         }
     }, [keyDownHandler]);
 
-    useEffect(() => {
-        // add event listeners and attach them to handler functions
-        window.document.addEventListener("keyup", keyUpHandler)
+    // useEffect(() => {
+    //     // add event listeners and attach them to handler functions
+    //     window.document.addEventListener("keyup", keyUpHandler)
 
-        // when component unmounts, remove event listeners
-        return () => {
-            window.document.removeEventListener("keyup", keyUpHandler)
-        }
-    }, [keyUpHandler]);
+    //     // when component unmounts, remove event listeners
+    //     return () => {
+    //         window.document.removeEventListener("keyup", keyUpHandler)
+    //     }
+    // }, [keyUpHandler]);
 
 
     // helper functions that are called by handler functions
@@ -233,33 +233,33 @@ export default function Performance() {
     }
 
     
-    const keyHoldHandler = () => {
-        // let startTime = null;
-        // let keyDownAllowed = true;
+    // const keyHoldHandler = () => {
+    //     // let startTime = null;
+    //     // let keyDownAllowed = true;
 
-        if (KeyboardEvent.repeat != undefined) {
-            keyDownAllowed = !KeyboardEvent.repeat;
-        }
-        if (!keyDownAllowed) return;
-        keyDownAllowed = false;
+    //     if (KeyboardEvent.repeat != undefined) {
+    //         keyDownAllowed = !KeyboardEvent.repeat;
+    //     }
+    //     if (!keyDownAllowed) return;
+    //     keyDownAllowed = false;
 
-        startTime = Date.now();
-    }
+    //     startTime = Date.now();
+    // }
 
-    const keyUpHandler = () => {
-        const endTime = Date.now();
-        const elapsedTime = endTime - startTime;
-        keyDownAllowed = true;
-        startTime = null;
-        const currentPrompt = prompts[promptIndex];
-        const promptDuration = currentPrompt["duration"];
-        const userHeldDownKeyLongEnough = elapsedTime >= promptDuration;
+    // const keyUpHandler = () => {
+    //     const endTime = Date.now();
+    //     const elapsedTime = endTime - startTime;
+    //     keyDownAllowed = true;
+    //     startTime = null;
+    //     const currentPrompt = prompts[promptIndex];
+    //     const promptDuration = currentPrompt["duration"];
+    //     const userHeldDownKeyLongEnough = elapsedTime >= promptDuration;
 
-        if (userHeldDownKeyLongEnough) {
-            elapsedTime = 0
-            updatePrompt();
-        }
-    }
+    //     if (userHeldDownKeyLongEnough) {
+    //         elapsedTime = 0
+    //         updatePrompt();
+    //     }
+    // }
 
 
     // let completedPrompts = []
