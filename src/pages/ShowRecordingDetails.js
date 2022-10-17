@@ -11,7 +11,6 @@ export const ShowRecordingDetails = () => {
 
     
     const getLogs = async () => {
-        console.log(URL)
         try {
             const response = await fetch(URL)
             const recordingDetails = await response.json()
@@ -27,8 +26,6 @@ export const ShowRecordingDetails = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const URL = `${BASE_URL}archive/${id}`
-        console.log("THE URL WE ARE PUTTING TO IS....",URL)
         try {
             const options = {
                 method: "PUT",
@@ -38,11 +35,9 @@ export const ShowRecordingDetails = () => {
                 body: JSON.stringify(recordingDeets)
             }
             const response = await fetch(URL, options)
-            console.log("YAY WE GOT A RESPONSE!")
             const responseData = await response.json()
             navigate("/archive")
         } catch (err) {
-            console.log("OHHH NOOOOO")
             console.log(err)
         }
     };
@@ -53,7 +48,6 @@ export const ShowRecordingDetails = () => {
 
             const response = await fetch(URL, options)
             const deletedLog = await response.json()
-            console.log(deletedLog)
             navigate("/archive")
         } catch (err) {
             console.log(err)
@@ -66,10 +60,11 @@ export const ShowRecordingDetails = () => {
 
     return (
         <div>
-            <h1>Edit performance log.</h1>
+            <h1>Update your performance log.</h1>
             {
             recordingDeets && (<section>
                 <form onSubmit={handleSubmit}>
+                    <div className="form-rule"></div>
                     <input
                         type="text"
                         value={recordingDeets.location}
@@ -78,6 +73,7 @@ export const ShowRecordingDetails = () => {
                         placeholder={recordingDeets.location}
                         onChange={handleChange}
                     />
+                    <div className="form-rule"></div>
                     <input
                         type="text"
                         value={recordingDeets.environment}
@@ -86,6 +82,7 @@ export const ShowRecordingDetails = () => {
                         placeholder={recordingDeets.environment}
                         onChange={handleChange}
                         />
+                    <div className="form-rule"></div>
                     <input
                         type="text"
                         value={recordingDeets.notes}
@@ -94,11 +91,12 @@ export const ShowRecordingDetails = () => {
                         placeholder={recordingDeets.notes}
                         onChange={handleChange}
                     />
-                    <input type="submit" value="Submit" />
+                    <div className="form-rule"></div>
+                    <input type="submit" value="Submit edits." />
                 </form>
             </section>)
             }
-            <button onClick={() => deletePerformanceLog()}>KILL THE SPARE!!!</button>
+            <p onClick={() => deletePerformanceLog()}>or click here to delete recording.</p>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -7,7 +8,7 @@ const prompts = [
     {
         "id": "prompt-1",
         "domEvent": "keydown",
-        "amount": 3,
+        "amount": 15,
         "keyCode": "KeyB",
         "text": "Lightly tap the B key 15 times."
     },
@@ -27,16 +28,9 @@ const prompts = [
     {
         "id": "prompt-4",
         "domEvent": "keydown",
-        "amount": 20,
+        "amount": 10,
         "keyCode": "Digit1" || "Numpad1",
-        "text": "Hit the 1 key 20 times."
-    },
-    {
-        "id": "prompt-5",
-        "domEvent": "keyhold",
-        "duration": 4000,
-        "keyCode": "Space",
-        "text": "Press and hold the spacebar for at least 4 seconds, then lift."
+        "text": "Hit the 1 key 10 times."
     },
     {
         "id": "prompt-6",
@@ -45,31 +39,11 @@ const prompts = [
         "text": "Left click twice."
     },
     {
-        "id": "prompt-7",
-        "domEvent": "keyhold",
-        "duration": 2000,
-        "keyCode": "KeyG",
-        "text": "Press and hold the G key for 2 seconds, then lift."
-    },
-    {
-        "id": "prompt-8",
-        "domEvent": "click",
-        "amount": 1,
-        "text": "Left click once."
-    },
-    {
-        "id": "prompt-9",
-        "domEvent": "keyhold",
-        "duration": 8000,
-        "keyCode": "Digit6" || "Numpad6",
-        "text": "Press and hold the 6 key for 8 seconds, then lift."
-    },
-    {
         "id": "prompt-10",
         "domEvent": "keydown",
-        "amount": 42,
+        "amount": 22,
         "keyCode": "ArrowUp",
-        "text": "Tap the up arrow 42 times."
+        "text": "Tap the up arrow 22 times."
     },
     {
         "id": "prompt-11",
@@ -125,25 +99,11 @@ const prompts = [
         "text": "Tap the H key once."
     },
     {
-        "id": "prompt-19",
-        "domEvent": "keyhold",
-        "duration": 2000,
-        "keyCode": "KeyO",
-        "text": "Hold down the O key for 2 seconds."
-    },
-    {
         "id": "prompt-20",
         "domEvent": "keydown",
         "amount": 1,
         "keyCode": "KeyQ",
         "text": "Tap the Q key once."
-    },
-    {
-        "id": "prompt-21",
-        "domEvent": "keyhold",
-        "duration": 30000,
-        "keyCode": "Digit3" || "Numpad3",
-        "text": "Press and hold the 3 key for 30 seconds."
     },
     {
         "id": "prompt-22",
@@ -158,12 +118,9 @@ export default function Performance() {
     const [promptIndex, setPromptIndex] = useState(0)
     const [numberOfClicks, setNumberOfClicks] = useState(0)
     const [numberOfKeyDowns, setNumberOfKeyDowns] = useState(0)
-    const [startTime, setStartTime] = useState(0)
-    const [keyDownAllowed, setKeyDownAllowed] = useState(0)
+    const navigate = useNavigate()
 
-    // handler functions that are called by event listeners
     const clickHandler = (MouseEvent) => {
-        console.log ("Lemme tell u about this Mouse Event: " + MouseEvent)
         const currentPrompt = prompts[promptIndex];
         if (currentPrompt["domEvent"] === "click") {
             countClicks();
@@ -171,47 +128,26 @@ export default function Performance() {
     }
 
     const keyDownHandler = (KeyboardEvent) => {
-        console.log("The keyboard event code is: ", KeyboardEvent.code)
         const currentPrompt = prompts[promptIndex];
         if (currentPrompt["domEvent"] === "keydown" && currentPrompt["keyCode"] === KeyboardEvent.code) {
             countKeyDowns()
         }
     }
 
-
-    // add and remove event listeners
     useEffect(() => {
-        // add event listeners and attach them to handler functions
         window.document.addEventListener("click", clickHandler)
-
-        // when component unmounts, remove event listeners
         return () => {
             window.document.removeEventListener("click", clickHandler)
         }
     }, [clickHandler]);
 
     useEffect(() => {
-        // add event listeners and attach them to handler functions
         window.document.addEventListener("keydown", keyDownHandler)
-
-        // when component unmounts, remove event listeners
         return () => {
             window.document.removeEventListener("keydown", keyDownHandler)
         }
     }, [keyDownHandler]);
 
-    // useEffect(() => {
-    //     // add event listeners and attach them to handler functions
-    //     window.document.addEventListener("keyup", keyUpHandler)
-
-    //     // when component unmounts, remove event listeners
-    //     return () => {
-    //         window.document.removeEventListener("keyup", keyUpHandler)
-    //     }
-    // }, [keyUpHandler]);
-
-
-    // helper functions that are called by handler functions
     const countClicks = () => {
         const newNumberOfClicks = numberOfClicks + 1
         if (newNumberOfClicks === prompts[promptIndex]["amount"]) {
@@ -232,65 +168,20 @@ export default function Performance() {
         }
     }
 
-    
-    // const keyHoldHandler = () => {
-    //     // let startTime = null;
-    //     // let keyDownAllowed = true;
-
-    //     if (KeyboardEvent.repeat != undefined) {
-    //         keyDownAllowed = !KeyboardEvent.repeat;
-    //     }
-    //     if (!keyDownAllowed) return;
-    //     keyDownAllowed = false;
-
-    //     startTime = Date.now();
-    // }
-
-    // const keyUpHandler = () => {
-    //     const endTime = Date.now();
-    //     const elapsedTime = endTime - startTime;
-    //     keyDownAllowed = true;
-    //     startTime = null;
-    //     const currentPrompt = prompts[promptIndex];
-    //     const promptDuration = currentPrompt["duration"];
-    //     const userHeldDownKeyLongEnough = elapsedTime >= promptDuration;
-
-    //     if (userHeldDownKeyLongEnough) {
-    //         elapsedTime = 0
-    //         updatePrompt();
-    //     }
-    // }
-
-
-    // let completedPrompts = []
-
-    // const updatePrompt = (promptIndex) => {
-    //     if (completedPrompts.length === 0) {
-    //         for (let i = 0; i <promptIndex.length; i++)
-    //         completedPrompts.push(i);
-    //     }
-
-    //     let randomPrompt = Math.floor(Math.random() * completedPrompts.length);
-    //     let randomPromptIndex = completedPrompts[randomPrompt];
-
-    //     completedPrompts.splice(randomPrompt, 1);
-    //     setPromptIndex(randomPromptIndex);
-    // }
-
-    ///////////////////////////////////////
-    // BEAUTIFULLY-PRESERVED, FUNCTIONAL CODE
     const updatePrompt = () => {
         const newPromptIndex = promptIndex + 1
         if (newPromptIndex < prompts.length) {
             setPromptIndex(newPromptIndex)
         }
+        else {
+            navigate("/log")
+        }
     }
-    ///////////////////////////////////////
 
     return (
         <>
-            <div>Performance</div>
-            <div>{prompts[promptIndex]["text"]}</div>
+
+            <h1 className="performance-prompts">{prompts[promptIndex]["text"]}</h1>
         </>
     )
 }

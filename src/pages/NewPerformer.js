@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 export const NewPerformer = () => {
     const URL = process.env.REACT_APP_BASE_URL + "performers";
-    console.log(URL)
     const navigate = useNavigate();
     const [newPerformerForm, setNewPerformerForm] = useState({
         name: "",
@@ -40,6 +39,7 @@ export const NewPerformer = () => {
     <section>
         <h1>Enter your name and email.</h1>
         <form onSubmit={handleSubmit}>
+        <div className="form-rule"></div>
             <input
                 type="text"
                 required
@@ -48,6 +48,7 @@ export const NewPerformer = () => {
                 placeholder="John Cage"
                 onChange={handleChange}
             />
+            <div className="form-rule"></div>
             <input
                 type="text"
                 required
@@ -56,6 +57,7 @@ export const NewPerformer = () => {
                 placeholder="johnny@watermusic.net"
                 onChange={handleChange}
             />
+            <div className="form-rule"></div>
             <input type="submit" value="Submit" />
         </form>
     </section>
