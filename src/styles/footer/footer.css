@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Lausanne500Normal";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lausanne500Italic";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-500Italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Lausanne150Normal";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-150.woff2") format("woff2");
+  font-weight: 150;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lausanne150Italic";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-150Italic.woff2") format("woff2");
+  font-weight: 150;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Director";
+  src: url("https://files.cargocollective.com/c1451007/Director-Light.woff2") format("woff2");
+  font-weight: lighter;
+  font-style: normal;
+}
+.site-nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 50px;
+  position: fixed;
+  bottom: 0;
+  height: 65px;
+  width: 100vw;
+  border-top: 1px solid #161515;
+}
+
+.nav-link {
+  display: block;
+  font-family: "Lausanne150Normal", Helvetica, Arial, sans-serif;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=footer.css.map */

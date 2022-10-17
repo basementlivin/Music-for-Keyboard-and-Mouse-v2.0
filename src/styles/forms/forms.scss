@@ -1,0 +1,50 @@
+@import "../variables/variables.scss";
+
+.form-wrapper {
+    width: 92vw;
+    @include flexbox(column nowrap, 50px);
+}
+
+.form-header {
+    font-family: $Lausanne500;
+    font-size: 3.5em;
+}
+
+.form-rule {
+    height: 1px;
+    background-color: $blackType;
+    width: 40%;
+}
+
+.form-submit {
+    font-family: $Lausanne500;
+    font-size: 2.5em;
+    margin-top: 25px;
+    &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.form-delete {
+    font-family: $monospace;
+    font-size: 0.8em;
+    margin-top: 15px;
+    &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+input {
+    font-family: $monospace;
+    font-size: 0.75em;
+    color: $blackType;
+    width: 88vw;
+    height: 5vh;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}

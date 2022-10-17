@@ -31,11 +31,12 @@ export default function Archive () {
                         <ul className="recording-details" key={recording._id}>
                             <li>{recording.location}</li>
                             <li>{recording.environment}</li>
-                            <Link to={`/archive/${recording._id}`}>edit recording details</Link>
+                            <Link className="edit-recording-link" to={`/archive/${recording._id}`}>edit recording details</Link>
                         </ul>
                     </div>
                 ))}
                 <div className="recording-rule"></div>
+                <div className="archive-footer-buffer"></div>
             </div>
         </div>
     )

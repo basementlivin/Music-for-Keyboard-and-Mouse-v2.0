@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "Lausanne500Normal";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lausanne500Italic";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-500Italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Lausanne150Normal";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-150.woff2") format("woff2");
+  font-weight: 150;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lausanne150Italic";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-150Italic.woff2") format("woff2");
+  font-weight: 150;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Director";
+  src: url("https://files.cargocollective.com/c1451007/Director-Light.woff2") format("woff2");
+  font-weight: lighter;
+  font-style: normal;
+}
+.form-wrapper {
+  width: 92vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 50px;
+}
+
+.form-header {
+  font-family: "Lausanne500Normal", Helvetica, Arial, sans-serif;
+  font-size: 3.5em;
+}
+
+.form-rule {
+  height: 1px;
+  background-color: #161515;
+  width: 40%;
+}
+
+.form-submit {
+  font-family: "Lausanne500Normal", Helvetica, Arial, sans-serif;
+  font-size: 2.5em;
+  margin-top: 25px;
+}
+.form-submit:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.form-delete {
+  font-family: "Director", monospace;
+  font-size: 0.8em;
+  margin-top: 15px;
+}
+.form-delete:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+input {
+  font-family: "Director", monospace;
+  font-size: 0.75em;
+  color: #161515;
+  width: 88vw;
+  height: 5vh;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}/*# sourceMappingURL=forms.css.map */
