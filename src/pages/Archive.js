@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default function Archive () {
@@ -34,11 +35,7 @@ export default function Archive () {
                             <li>{recording.location}</li>
                             <li>{recording.environment}</li>
                             <li>
-                                <div
-                                    role="button"
-                                    onClick={()=>navigate(`/archive/${recording._id}`)}>
-                                    go to recording
-                                </div>
+                            <Link to={`/archive/${recording._id}`}>go to recording</Link>
                             </li>
                         </ul>
                         ))}

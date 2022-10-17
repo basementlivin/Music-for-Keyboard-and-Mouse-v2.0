@@ -18,9 +18,9 @@ export default function Main () {
                 <Route path="/register" element={<NewPerformer />} />
                 <Route path="/performance" element={<Performance />} />
                 <Route path="/log" element={<LogPerformance />} />
-                <Route path="/archive" element={<Archive />} >
-                    <Route path="/archive/:id" element={<ShowRecordingDetails />} />
-                </Route>
+                <Route path="/archive" element={<Archive />} />
+                <Route path="/archive/:id" element={<ShowRecordingDetails />} />
+
             </Routes>
             <Footer />
         </main>

@@ -7,9 +7,10 @@ export const ShowRecordingDetails = () => {
     const [recordingDeets, setRecordingDeets] = useState(null)
     const {id} = useParams()
     const navigate = useNavigate()
+    const URL = `${BASE_URL}archive/${id}`
+
     
     const getLogs = async () => {
-        const URL = `${BASE_URL}archive/${id}`
         console.log(URL)
         try {
             const response = await fetch(URL)
@@ -26,20 +27,22 @@ export const ShowRecordingDetails = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const URL = `${BASE_URL}archive/${id}`
+        console.log("THE URL WE ARE PUTTING TO IS....",URL)
         try {
-            const updateRecordingDeets = { ...recordingDeets }
             const options = {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(updateRecordingDeets)
+                body: JSON.stringify(recordingDeets)
             }
             const response = await fetch(URL, options)
+            console.log("YAY WE GOT A RESPONSE!")
             const responseData = await response.json()
-            setRecordingDeets({ location: "", environment: "", notes: "" })
             navigate("/archive")
         } catch (err) {
+            console.log("OHHH NOOOOO")
             console.log(err)
         }
     };
@@ -47,8 +50,6 @@ export const ShowRecordingDetails = () => {
     const deletePerformanceLog = async () => {
         try {
             const options = { method: "DELETE" }
-            const URL = `${BASE_URL}archive/${id}`
-            console.log(URL)
 
             const response = await fetch(URL, options)
             const deletedLog = await response.json()
@@ -56,7 +57,6 @@ export const ShowRecordingDetails = () => {
             navigate("/archive")
         } catch (err) {
             console.log(err)
-            navigate("/archive/" + id)
         }
     };
 
@@ -67,7 +67,8 @@ export const ShowRecordingDetails = () => {
     return (
         <div>
             <h1>Edit performance log.</h1>
-            <section>
+            {
+            recordingDeets && (<section>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
@@ -95,7 +96,9 @@ export const ShowRecordingDetails = () => {
                     />
                     <input type="submit" value="Submit" />
                 </form>
-            </section>
+            </section>)
+            }
+            <button onClick={() => deletePerformanceLog()}>KILL THE SPARE!!!</button>
         </div>
     )
 }
