@@ -3,18 +3,18 @@ import { Link } from "react-router-dom"
 
 export default function Footer (props) {
     return (
-        <footer>
-            <nav className="nav">
-                <Link to="/">
+        <>
+            <nav className="site-nav">
+                <Link className="nav-link" to="/">
                     <p>home</p>
                 </Link>
-                <Link to="/register">
+                <Link className="nav-link" to="/register">
                     <p>register</p>
                 </Link>
-                <Link to="/archive">
+                <Link className="nav-link" to="/archive">
                     <p>archive</p>
                 </Link>
             </nav>
-        </footer>
+        </>
     )
 }

@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Lausanne500Normal";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lausanne500Italic";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-500Italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Lausanne150Normal";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-150.woff2") format("woff2");
+  font-weight: 150;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lausanne150Italic";
+  src: url("https://files.cargocollective.com/c1451007/TWKLausanne-150Italic.woff2") format("woff2");
+  font-weight: 150;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Director";
+  src: url("https://files.cargocollective.com/c1451007/Director-Light.woff2") format("woff2");
+  font-weight: lighter;
+  font-style: normal;
+}/*# sourceMappingURL=variables.css.map */

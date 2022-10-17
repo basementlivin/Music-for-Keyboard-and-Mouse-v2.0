@@ -1,0 +1,21 @@
+@import "../typefaces/typefaces.scss";
+
+// COLOR ZONE!
+$backgroundCream: #FAF6B5;
+$blackType: #161515;
+
+// FONT ZONE!
+$Lausanne500: "Lausanne500Normal", Helvetica, Arial, sans-serif;
+$Lausanne500Italic: "Lausanne500Italic", Helvetica, Arial, sans-serif;
+$Lausanne150: "Lausanne150Normal", Helvetica, Arial, sans-serif;
+$monospace: "Director", monospace;
+
+// MIXINS ZONE!
+@mixin flexbox($flow, $gap) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: $gap;
+}

@@ -36,8 +36,8 @@ export const NewPerformer = () => {
 
     return (
         <>
-    <section>
-        <h1>Enter your name and email.</h1>
+    <section className="form-wrapper">
+        <h1 className="form-header">Enter your name and email.</h1>
         <form onSubmit={handleSubmit}>
         <div className="form-rule"></div>
             <input
@@ -58,7 +58,7 @@ export const NewPerformer = () => {
                 onChange={handleChange}
             />
             <div className="form-rule"></div>
-            <input type="submit" value="Submit" />
+            <input className="form-submit" type="submit" value="Submit" />
         </form>
     </section>
         </>

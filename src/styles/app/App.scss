@@ -1,0 +1,57 @@
+@import "../variables/variables.scss";
+
+* {
+    background-color: $backgroundCream;
+    text-align: center;
+    margin: 0 auto;
+    user-select: none;
+}
+
+body {
+    margin-top: 15%
+}
+
+.splashpage-wrapper {
+    width: 80vw;
+    @include flexbox(column nowrap, 50px)
+}
+
+.site-title {
+    font-family: $headerLarge;
+    font-size: 8.5em;
+    line-height: .90;
+    letter-spacing: -1px;
+}
+
+.site-subtitle {
+    font-family: $monospace;
+    font-size: 1.25em;
+}
+
+.site-nav {
+    @include flexbox(row nowrap, 50px);
+    position: fixed;
+    bottom: 0;
+    height: 65px;
+    width: 100vw;
+
+    border-top: 1px solid $blackType;
+
+    font-family: $performancePrompts;
+}
+
+.form-wrapper {
+    width: 92vw;
+    @include flexbox(column nowrap, 50px);
+}
+
+.form-header {
+    font-family: $headerLarge;
+    font-size: 2em;
+}
+
+.form-rule {
+    height: 1px;
+    background-color: $blackType;
+    width: 40%;
+}

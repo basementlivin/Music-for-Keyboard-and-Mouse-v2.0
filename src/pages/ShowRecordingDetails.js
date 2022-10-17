@@ -60,9 +60,9 @@ export const ShowRecordingDetails = () => {
 
     return (
         <div>
-            <h1>Update your performance log.</h1>
+            <h1 className="form-header">Update your performance log.</h1>
             {
-            recordingDeets && (<section>
+            recordingDeets && (<section className="form-wrapper">
                 <form onSubmit={handleSubmit}>
                     <div className="form-rule"></div>
                     <input
@@ -92,7 +92,7 @@ export const ShowRecordingDetails = () => {
                         onChange={handleChange}
                     />
                     <div className="form-rule"></div>
-                    <input type="submit" value="Submit edits." />
+                    <input className="form-submit" type="submit" value="Submit edits." />
                 </form>
             </section>)
             }

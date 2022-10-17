@@ -2,7 +2,6 @@ import React from "react"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-
 export default function LogPerformance () {
     const URL = process.env.REACT_APP_BASE_URL + "archive";
     const navigate = useNavigate()
@@ -36,12 +35,10 @@ export default function LogPerformance () {
     }
 };
 
-// todo: link performance log to specific performer ID!
-
     return (
         <div>
-            <h1>Log your performance here.</h1>
-            <section>
+            <h1 className="form-header">Log your performance here.</h1>
+            <section className="form-wrapper">
                 <form onSubmit={handleSubmit}>
                 <div className="form-rule"></div>
                     <input
@@ -71,7 +68,7 @@ export default function LogPerformance () {
                         onChange={handleChange}
                     />
                     <div className="form-rule"></div>
-                    <input type="submit" value="Submit" />
+                    <input className="form-submit" type="submit" value="Submit" />
                 </form>
             </section>
         </div>
