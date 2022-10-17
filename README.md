@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Music for Keyboard and Mouse (v2.0)
+A browser-based percussion score for the solo performer. Conceptualized, designed, and developed by Erik Pedersen during a one-week sprint in late summer 2022.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### FILE UNDER: MERN stack, Sass, web apps, sprint, contemporary art, percussion, experimental music.
+#### TECH STACK & DESIGN TOOLS: HTML, SCSS, JavaScript, Express, Node.js, React, MongoDB, Mongoose, Figma.
 
-## Available Scripts
+![Man nodding slowly and peacfully with headphones on.](https://media.giphy.com/media/TbPh7p3cfUAPC/giphy.gif)
 
-In the project directory, you can run:
+## Description & User Stories
+The user enacts a deadpan piece of percussion music using only their keyboard and mouse (or trackpad). Drawing on traditions of [musique concrète](https://www.frontiersin.org/articles/10.3389/fpsyg.2021.672949/full), [noise music](https://www.theguardian.com/music/2008/nov/10/squarepusher-paul-hegarty-noise), and the chance techniques of [Marcel Duchamp](https://www.moma.org/learn/moma_learning/themes/dada/marcel-duchamp-and-the-readymade/) and [John Cage](https://www.jstor.org/stable/25597623), players are shown a series of prompts that they must complete before moving on to the next one. Instead of traditional musical notation, this score exists as plain text: "Tap the up arrow 42 times", "Press and hold the 3 key for 30 seconds" and so forth. In the relative "silence" of these simple acts, players may begin to pay closer attention to the sounds of their keystrokes and mouse clicks, the drone of their computer, their breath, and the everyday music of their immediate surroundings.
 
-### `npm start`
+[Click here](https://634cfe7fd81dce2f0d2fa1e0--melodious-granita-c13363.netlify.app/) to begin your own performance. It is highly recommended that you pause any music, videos, or podcasts while playing through the prompts in "Music for Keyboard and Mouse."
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Wireframes
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 37 31 AM" src="https://user-images.githubusercontent.com/109049703/196192651-2de7c5f1-3fd9-451e-b407-f76c73860c27.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 37 43 AM" src="https://user-images.githubusercontent.com/109049703/196192658-5cd5c62f-dee5-4153-b15b-90056c4fbce1.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 38 00 AM" src="https://user-images.githubusercontent.com/109049703/196192667-2ec7f6c6-ab4d-499c-9bd9-dd8b91ca8c8a.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 38 08 AM" src="https://user-images.githubusercontent.com/109049703/196192677-c9c8204d-a75e-49ee-8d28-c35084f29293.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 38 21 AM" src="https://user-images.githubusercontent.com/109049703/196192681-cc129ecf-b4d4-4762-8584-9bad2e4bc309.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 38 33 AM" src="https://user-images.githubusercontent.com/109049703/196192841-9d5a9b4f-3675-477c-b596-ad2231753681.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 38 53 AM" src="https://user-images.githubusercontent.com/109049703/196192847-77d11fee-772a-4c69-acdf-761c206f919e.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 39 04 AM" src="https://user-images.githubusercontent.com/109049703/196192854-6b984ef9-eb31-46bd-a4f2-1340332aaa6d.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 39 21 AM" src="https://user-images.githubusercontent.com/109049703/196192862-46818122-1b04-4b9b-a914-ad348617eb21.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 39 49 AM" src="https://user-images.githubusercontent.com/109049703/196192868-5e081451-a350-49f6-856a-64d7c98c183d.png">
+<img width="1348" alt="Screen Shot 2022-10-17 at 9 40 05 AM" src="https://user-images.githubusercontent.com/109049703/196192875-1859614d-8ea5-48db-bd88-42ba5084e5d4.png">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Tools & Technologies Used
+This performance piece was built using the MERN stack: the client-facing portion is built in React and styled with SCSS, while the server-side relies on MongoDB, Mongoose, Express, and Node. Text editor: VS Code. Wireframes and [prototype](https://www.figma.com/proto/N5TgSTHSMXEBsT0STQJlJR/Music-for-Keyboard-and-Mouse?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2) designed in Figma. Fonts: [Lausanne](https://www.weltkern.com/shop/detail-typeface/lausanne) (type.weltkern, 2017) and [Director](https://velvetyne.fr/degheest/director.html) (Velvetyne, 2022).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Next Steps
+Some planned features and debugs for the next update of "Music for Keyboard and Mouse":
 
-### `npm run build`
+• Allow users to write new performance prompts.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+• Migrate performance prompt array from Performance.js to DB! The model could relate to the user who created it and maybe even have a play-count that increments whenever it shows up during a performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+• Implement dark mode, plus a couple extra color schemes. Not everyone finds creamy yellow relaxing, so I’d like to give people some options here.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+• Add filter options and a search feature to the recording archive, so you can parse through it more easily as it grows and becomes unwieldy.
 
-### `npm run eject`
+• Make sure the design is highly responsive! I want this to work on desktops, laptops, tablets, and phones—this way, people can do their performances outside of their homes, coffee shops, and places with reliable internet.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+• Add keycode recognition for operating systems beyong macOS. Correct key entry may not currently register for Windows users.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+• Include timers and counters to help performers keep track of the number and length of keystrokes and mouse clicks. If they're not so busy counting, they'll be able to listen more intently to their surroundings.
