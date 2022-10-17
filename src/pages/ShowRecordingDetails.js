@@ -59,14 +59,15 @@ export const ShowRecordingDetails = () => {
     }, []);
 
     return (
-        <div>
-            <h1 className="form-header">Update your performance log.</h1>
+        <>
             {
-            recordingDeets && (<section className="form-wrapper">
+                recordingDeets && (<section className="form-wrapper">
+                <h1 className="form-header">Update your performance log.</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-rule"></div>
                     <input
                         type="text"
+                        autoComplete="off"
                         value={recordingDeets.location}
                         maxLength="80"
                         name="location"
@@ -76,6 +77,7 @@ export const ShowRecordingDetails = () => {
                     <div className="form-rule"></div>
                     <input
                         type="text"
+                        autoComplete="off"
                         value={recordingDeets.environment}
                         maxLength="50"
                         name="environment"
@@ -85,6 +87,7 @@ export const ShowRecordingDetails = () => {
                     <div className="form-rule"></div>
                     <input
                         type="text"
+                        autoComplete="off"
                         value={recordingDeets.notes}
                         maxLength="400"
                         name="notes"
@@ -96,7 +99,7 @@ export const ShowRecordingDetails = () => {
                 </form>
             </section>)
             }
-            <p onClick={() => deletePerformanceLog()}>or click here to delete recording.</p>
-        </div>
+            <p className="form-delete" onClick={() => deletePerformanceLog()}>or click here to delete recording.</p>
+        </>
     )
 }

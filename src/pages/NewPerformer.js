@@ -43,6 +43,7 @@ export const NewPerformer = () => {
             <input
                 type="text"
                 required
+                autoComplete="off"
                 value={newPerformerForm.name}
                 name="name"
                 placeholder="John Cage"
@@ -52,13 +53,14 @@ export const NewPerformer = () => {
             <input
                 type="text"
                 required
+                autoComplete="off"
                 value={newPerformerForm.email}
                 name="email"
                 placeholder="johnny@watermusic.net"
                 onChange={handleChange}
             />
             <div className="form-rule"></div>
-            <input className="form-submit" type="submit" value="Submit" />
+            <input className="form-submit" type="submit" value="Submit." />
         </form>
     </section>
         </>

@@ -38,7 +38,7 @@
           user-select: none;
 }
 
-body {
+body, .archive-wrapper {
   margin-top: 15%;
 }
 
@@ -91,11 +91,77 @@ body {
 
 .form-header {
   font-family: "Lausanne500Normal", Helvetica, Arial, sans-serif;
-  font-size: 2em;
+  font-size: 3.5em;
 }
 
 .form-rule {
   height: 1px;
   background-color: #161515;
   width: 40%;
+}
+
+.form-submit {
+  font-family: "Lausanne500Normal", Helvetica, Arial, sans-serif;
+  font-size: 2.5em;
+  margin-top: 25px;
+}
+.form-submit:hover {
+  text-decoration: underline;
+}
+
+.form-delete {
+  font-family: "Director", monospace;
+  font-size: 0.8em;
+  margin-top: 15px;
+}
+.form-delete:hover {
+  text-decoration: underline;
+}
+
+input {
+  font-family: "Director", monospace;
+  font-size: 0.75em;
+  color: #161515;
+  width: 88vw;
+  height: 5vh;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.performance-prompts {
+  font-family: "Lausanne150Normal", Helvetica, Arial, sans-serif;
+  font-size: 3.5em;
+}
+
+.archive-wrapper {
+  width: 96vw;
+  margin-top: 0px;
+}
+
+.archive-header {
+  font-family: "Lausanne500Normal", Helvetica, Arial, sans-serif;
+  font-size: 5em;
+  text-align: left;
+  margin: 0 1em 0.75em 0;
+}
+
+.recording-rule {
+  height: 1px;
+  background-color: #161515;
+  width: 100%;
+}
+
+.recording-details {
+  font-family: "Director", monospace;
+  font-size: 0.85em;
+  text-align: left;
+  list-style: none;
+  height: 3.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: start;
 }/*# sourceMappingURL=App.css.map */

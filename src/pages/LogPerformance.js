@@ -36,13 +36,14 @@ export default function LogPerformance () {
 };
 
     return (
-        <div>
-            <h1 className="form-header">Log your performance here.</h1>
+        <>
             <section className="form-wrapper">
+                <h1 className="form-header">Log your performance here.</h1>
                 <form onSubmit={handleSubmit}>
                 <div className="form-rule"></div>
                     <input
                         type="text"
+                        autoComplete="off"
                         value={newLog.location}
                         maxLength="80"
                         name="location"
@@ -52,6 +53,7 @@ export default function LogPerformance () {
                     <div className="form-rule"></div>
                     <input
                         type="text"
+                        autoComplete="off"
                         value={newLog.environment}
                         maxLength="50"
                         name="environment"
@@ -61,6 +63,7 @@ export default function LogPerformance () {
                     <div className="form-rule"></div>
                     <input
                         type="text"
+                        autoComplete="off"
                         value={newLog.notes}
                         maxLength="400"
                         name="notes"
@@ -68,9 +71,9 @@ export default function LogPerformance () {
                         onChange={handleChange}
                     />
                     <div className="form-rule"></div>
-                    <input className="form-submit" type="submit" value="Submit" />
+                    <input className="form-submit" type="submit" value="Submit." />
                 </form>
             </section>
-        </div>
+        </>
     )
 }

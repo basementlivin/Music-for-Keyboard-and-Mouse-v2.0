@@ -23,18 +23,15 @@ export default function Archive () {
     
     return (
         <div>
-            <h1 className="archive-header">Music for Keyboard and Mouse, The Collected Recordings (2022—present)</h1>
             <div className="archive-wrapper">
+            <h1 className="archive-header">Music for Keyboard and Mouse, The Collected Recordings (2022—present)</h1>
                 {recordings.map(recording => (
                 <div className="recording-wrapper">
                     <div className="recording-rule"></div>
                         <ul className="recording-details" key={recording._id}>
-                            <li>{recording.name}</li>
                             <li>{recording.location}</li>
                             <li>{recording.environment}</li>
-                            <li>
-                            <Link to={`/archive/${recording._id}`}>go to recording</Link>
-                            </li>
+                            <Link to={`/archive/${recording._id}`}>edit recording details</Link>
                         </ul>
                     </div>
                 ))}
