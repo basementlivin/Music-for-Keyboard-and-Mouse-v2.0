@@ -1,0 +1,125 @@
+@import "../variables/variables.scss";
+
+* {
+    background-color: $backgroundCream;
+    text-align: center;
+    margin: 0 auto;
+    user-select: none;
+}
+
+body {
+    margin-top: 15%
+}
+
+.splashpage-wrapper {
+    width: 80vw;
+    @include flexbox(column nowrap, 50px)
+}
+
+.site-title {
+    font-family: $Lausanne500;
+    font-size: 8.5em;
+    line-height: .90;
+    letter-spacing: -1px;
+}
+
+.site-subtitle {
+    font-family: $monospace;
+    font-size: 1.25em;
+}
+
+.site-nav {
+    @include flexbox(row nowrap, 50px);
+    position: fixed;
+    bottom: 0;
+    height: 65px;
+    width: 100vw;
+
+    border-top: 1px solid $blackType;
+
+    font-family: $Lausanne150;
+}
+
+.form-wrapper {
+    width: 92vw;
+    @include flexbox(column nowrap, 50px);
+}
+
+.form-header {
+    font-family: $Lausanne500;
+    font-size: 3.5em;
+}
+
+.form-rule {
+    height: 1px;
+    background-color: $blackType;
+    width: 40%;
+}
+
+.form-submit {
+    font-family: $Lausanne500;
+    font-size: 2.5em;
+    margin-top: 25px;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+.form-delete {
+    font-family: $monospace;
+    font-size: 0.8em;
+    margin-top: 15px;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+input {
+    font-family: $monospace;
+    font-size: 0.75em;
+    color: $blackType;
+    width: 88vw;
+    height: 5vh;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.performance-prompts {
+    font-family: $Lausanne150;
+    font-size: 3.5em;
+}
+
+.archive-wrapper {
+    @extend body;
+    width: 96vw;
+    margin-top: 0px;
+}
+
+.archive-header {
+    font-family: $Lausanne500;
+    font-size: 5em;
+    text-align: left;
+    margin: 0 1em .75em 0;
+}
+
+.recording-rule {
+    height: 1px;
+    background-color: $blackType;
+    width: 100%;
+}
+
+.recording-details {
+    font-family: $monospace;
+    font-size: 0.85em;
+    text-align: left;
+    list-style: none;
+    height: 3.5em;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: start;
+}
