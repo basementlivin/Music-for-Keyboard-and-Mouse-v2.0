@@ -9,7 +9,6 @@ A browser-based percussion score for the solo performer. Conceptualized, designe
 ## Description & User Stories
 The user enacts a deadpan piece of percussion music using only their keyboard and mouse (or trackpad). Drawing on traditions of [musique concrète](https://www.frontiersin.org/articles/10.3389/fpsyg.2021.672949/full), [noise music](https://www.theguardian.com/music/2008/nov/10/squarepusher-paul-hegarty-noise), and the chance techniques of [Marcel Duchamp](https://www.moma.org/learn/moma_learning/themes/dada/marcel-duchamp-and-the-readymade/) and [John Cage](https://www.jstor.org/stable/25597623), players are shown a series of prompts that they must complete before moving on to the next one. Instead of traditional musical notation, this score exists as plain text: "Tap the up arrow 42 times", "Press and hold the 3 key for 30 seconds" and so forth. In the relative "silence" of these simple acts, players may begin to pay closer attention to the sounds of their keystrokes and mouse clicks, the drone of their computer, their breath, and the everyday music of their immediate surroundings.
 
-[Click here](https://634cfe7fd81dce2f0d2fa1e0--melodious-granita-c13363.netlify.app/) to begin your own performance. It is highly recommended that you pause any music, videos, or podcasts while playing through the prompts in "Music for Keyboard and Mouse."
 
 ## Wireframes
 <img width="1348" alt="Screen Shot 2022-10-17 at 9 37 31 AM" src="https://user-images.githubusercontent.com/109049703/196192651-2de7c5f1-3fd9-451e-b407-f76c73860c27.png">
